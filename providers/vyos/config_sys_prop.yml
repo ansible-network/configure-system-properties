@@ -1,0 +1,11 @@
+---
+- name: "vyos: create hostname, domain and name-server using network_cli connection"
+  with_items: "{{ sys_props }}"
+  loop_control:
+    loop_var: sys_prop
+  vyos_config:
+    lines:
+      - "set system host-name {{ sys_prop.hostname }}"
+      - "set system domain-name {{ sys_prop.domain_name }}"
+      - "set system name-server {{ sys_prop.name_server }}"
+  connection: network_cli
