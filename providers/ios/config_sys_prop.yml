@@ -1,0 +1,12 @@
+---
+- name: "ios: create hostname, domain and name-server using network_cli connection"
+  with_items: "{{ sys_props }}"
+  loop_control:
+    loop_var: sys_prop
+  ios_config:
+    lines:
+      - "hostname {{ sys_prop.hostname }}"
+      - "domain {{ sys_prop.domain_name }}"
+      - "ip name-server {{ sys_prop.name_server }}"
+      - "ip domain name {{ sys_prop.extensions.ios.ip_domain_name }}"
+  connection: network_cli
