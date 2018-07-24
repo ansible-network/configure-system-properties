@@ -1,0 +1,11 @@
+---
+- name: "nxos: create hostname, domain n name-server  using network_cli connection"
+  with_items: "{{ sys_props }}"
+  loop_control:
+    loop_var: sys_prop
+  nxos_config:
+    lines:
+      - "hostname {{ sys_prop.hostname }}"
+      - "ip domain-name {{ sys_prop.domain_name }}"
+      - "ip name-server {{ sys_prop.name_server }}"
+  connection: network_cli
