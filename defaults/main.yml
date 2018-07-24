@@ -1,0 +1,7 @@
+---
+{
+  "config_sys_prop": {
+  "hostname" : "new-hostname",
+  "domain_name": "test.domain.com"
+  }
+}
